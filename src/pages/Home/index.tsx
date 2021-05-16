@@ -23,7 +23,7 @@ const HomePage = () => {
           <Parallax />
         </div>
       </Layout>
-      <Heading tag="p">Что то тут написано</Heading>
+      <Heading className={s.contentWrap}>Что то тут написано</Heading>
       <Button onClick={() => console.log('Click Button smallBlueButton!')} styleButton="smallBlueButton">
         See
       </Button>
