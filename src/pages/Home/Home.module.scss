@@ -1,0 +1,32 @@
+@import '../../variables';
+
+.root {
+  min-height: 100vh;
+  background: linear-gradient(180deg, $third 0%, $primary 100%);
+}
+.contentWrap {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.contentText {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  width: 516px;
+  height: 557px;
+  h1 {
+    font-size: 72px;
+    span {
+      font-weight: 400;
+    }
+  }
+  h3 {
+    font-size: 36px;
+    font-weight: 400;
+  }
+}
+
+.contentParallax {
+  display: block;
+}

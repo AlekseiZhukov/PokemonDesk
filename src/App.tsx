@@ -1,11 +1,10 @@
 import React from 'react';
-import cn from 'classnames';
-import css from './App.module.scss';
+
+//  import css from './App.module.scss';
+import HomePage from './pages/Home';
 
 const App = () => {
-  console.log('####: Some log');
-  console.log('####: create for check git commit operation');
-  return <div className={cn(css.header, css.color)}>Hi! This is App Component!</div>;
+  return <HomePage />;
 };
 
 export default App;

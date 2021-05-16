@@ -1,0 +1,53 @@
+.root {
+  border: none;
+
+  box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
+  border-radius: 11px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  outline: 0;
+  font-family: Karla-Regular, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+
+  &:active {
+    box-shadow: inset 0px -6px 0px rgba(0, 0, 0, 0.18);
+    padding-bottom: 6px;
+  }
+}
+
+.mainButton,
+.mainYellowButton {
+  background: #73d677;
+  height: 66px;
+  width: 231px;
+  padding: 0 20px 9px;
+  font-size: 23px;
+  line-height: 27px;
+}
+.mainYellowButton {
+  background: #f2cb07;
+}
+.smallGreenButton,
+.smallBlueButton {
+  background: #73d677;
+  height: 16px;
+  width: 60px;
+  font-family: Roboto-Regular, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  padding: 0 20px 2px;
+  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
+  &:active {
+    box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.18);
+    padding-bottom: 1px;
+  }
+}
+.smallBlueButton {
+  background: #07d6f2;
+}
