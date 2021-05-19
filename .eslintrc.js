@@ -19,6 +19,12 @@ module.exports = {
   },
   plugins: ["prettier", "react", "@typescript-eslint"],
   rules: {
+    "no-shadow": [
+      "warn",
+      { builtinGlobals: false, hoist: "functions", allow: [] },
+    ],
+    "react/jsx-props-no-spreading": "off",
+
     "react/prop-types": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "no-console": "warn",

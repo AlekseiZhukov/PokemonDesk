@@ -10,3 +10,6 @@ src/*.d.ts
 /src/components/Layout/Layout.module.scss.d.ts
 /src/components/Parallax/Parallax.module.scss.d.ts
 /Karla/
+/src/pages/NotFound/NotFound.module.scss.d.ts
+/src/pages/Pokedex/PokedexPage.module.scss.d.ts
+/src/components/PokemonCard/PokemonCard.module.scss.d.ts

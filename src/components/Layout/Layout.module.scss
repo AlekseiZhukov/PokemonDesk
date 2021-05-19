@@ -8,6 +8,7 @@
   display: flex;
   flex-flow: row;
   align-items: center;
+  overflow: hidden;
 
   @include media('>tablet', '<desktop') {
     padding: 0 20px;
