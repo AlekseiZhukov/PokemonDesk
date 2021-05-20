@@ -2,7 +2,7 @@ import React from 'react';
 import Heading from '../../components/Heading';
 import Header from '../../components/Header';
 import Layout from '../../components/Layout';
-import PokemonCard from '../../components/PokemonCard/PokemonCard';
+import PokemonCard from '../../components/PokemonCard';
 import { pokemons } from './Pokemons';
 import s from './PokedexPage.module.scss';
 

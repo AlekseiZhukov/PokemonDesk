@@ -13,7 +13,7 @@ interface TPokemonCardProps {
   img: string;
 }
 
-const PokemonCard: React.FC<TPokemonCardProps> = ({ ...props }) => {
+const Index: React.FC<TPokemonCardProps> = ({ ...props }) => {
   const { name, stats, types, img } = { ...props };
   return (
     <div className={s.root}>
@@ -57,4 +57,4 @@ const PokemonCard: React.FC<TPokemonCardProps> = ({ ...props }) => {
   );
 };
 
-export default PokemonCard;
+export default Index;

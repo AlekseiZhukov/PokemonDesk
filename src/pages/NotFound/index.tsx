@@ -21,7 +21,7 @@ const NotFoundPage = () => {
           <span>The rocket team</span> has won this time.
         </Heading>
         <Button styleButton="mainYellowButton" onClick={() => navigate(LinkEnum.HOME)}>
-          return{' '}
+          return
         </Button>
       </Layout>
     </div>
