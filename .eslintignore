@@ -1,3 +1,4 @@
 *.css
 index.css
 webpack.config.js
+/src/pages/Pokedex/Pokemons.ts

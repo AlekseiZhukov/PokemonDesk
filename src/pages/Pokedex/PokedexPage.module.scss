@@ -1,0 +1,30 @@
+@import '../../variables';
+
+.root {
+  min-height: 100vh;
+}
+.contextWrap {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 90%;
+}
+.title {
+  margin-top: 73px;
+  font-weight: normal;
+}
+
+.search {
+  margin: 34px 0;
+  width: 100%;
+  height: 53px;
+  background: #f2f2f2;
+  box-shadow: 4px 4px 16px rgba(1, 28, 64, 0.2);
+  border-radius: 40px;
+}
+.pokemonCardsWrap {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+}

@@ -3,7 +3,7 @@ import SmallPokeBallPng from './assets/PokeBall1.png';
 import CloudPng from './assets/Cloud1.png';
 import CloudBigPng from './assets/Cloud2.png';
 import PikachuPng from './assets/Pikachu.png';
-import PokeBallPng from './assets/PokeBall2.png';
+import PokeBallPng from './assets/Pokeball2.png';
 import s from './Parallax.module.scss';
 
 const Parallax = () => {
