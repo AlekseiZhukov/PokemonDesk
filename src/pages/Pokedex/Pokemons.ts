@@ -1,4 +1,4 @@
-interface IPokemons {
+interface IPokemon {
   name_clean: string;
   abilities: [string, string];
   stats: {
@@ -20,7 +20,7 @@ interface IPokemons {
   weight: number;
 }
 
-export const pokemons: IPokemons[] = [
+export const pokemons: IPokemon[] = [
   {
     name_clean: 'bulbasaur',
     abilities: ['overgrow', 'chlorophyll'],

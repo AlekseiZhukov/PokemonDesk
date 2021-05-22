@@ -68,7 +68,6 @@
 .pictureWrap {
   width: 232px;
   height: 100%;
-  background: linear-gradient(270deg, #b33327 0.15%, #d93e30 100%);
   position: absolute;
   right: 0;
   display: flex;
@@ -76,8 +75,24 @@
   align-items: center;
   border-radius: 0 8px 8px 0;
   img {
-    width: 80%;
+    width: 70%;
   }
+}
+
+.pictureWrap1 {
+  background: linear-gradient(270deg, #b33327 0.15%, #d93e30 100%);
+}
+.pictureWrap2 {
+  background: linear-gradient(270deg, #5bc7fa 0.15%, #35baff 100%);
+}
+.pictureWrap3 {
+  background: linear-gradient(270deg, #64d368 0.15%, #64d368 70.88%);
+}
+.pictureWrap4 {
+  background: linear-gradient(270deg, #f89eae 0.15%, #f4b5c1 100%);
+}
+.pictureWrap5 {
+  background: linear-gradient(270deg, #f2cb07 0.15%, #f2b807 100%);
 }
 
 .label {
@@ -102,25 +117,37 @@
     margin-right: 0;
   }
 }
-.lableStileDarkRock {
+.labelstile,
+.labeldark,
+.labelrock {
   background: #a1a1a1;
 }
-.lableGrassBug {
+
+.labelgrass,
+.labelbug {
   background: #70a83b;
 }
-.lableIceWater {
+
+.labelice,
+.labelwater {
   background: #a2cff0;
 }
-.lableNormalGosth {
+
+.labelnormal,
+.labelgosth {
   background: #76aadb;
 }
-.lablePosionPsychicFairyGhost {
+
+.labelghost,
+.labelfairy,
+.labelpsychic,
+.labelpoison {
   background: #a974bc;
 }
-.lableGround {
+.labelground {
   background: #9b897b;
 }
-.lableElectric {
+.labelelectric {
   background: #f7c545;
 }
 
