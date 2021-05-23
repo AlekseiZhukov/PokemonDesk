@@ -33,24 +33,13 @@ const Index: React.FC<TPokemonCardProps> = ({ ...props }) => {
         </div>
         <div className={s.labelWrap}>
           {types.map((type) => (
-            <span
-              key={type}
-              className={cn(s.label, {
-                [s.lableStileDarkRock]: type === 'stile' || type === 'dark' || type === 'rock',
-                [s.lableGrassBug]: type === 'grass' || type === 'bug',
-                [s.lableIceWater]: type === 'water' || type === 'ice',
-                [s.lableNormalGosth]: type === 'normal' || type === 'gosth',
-                [s.lablePosionPsychicFairyGhost]:
-                  type === 'poison' || type === 'psychic' || type === 'fairy' || type === 'ghost',
-                [s.lableGround]: type === 'ground',
-                [s.lableElectric]: type === 'electric',
-              })}>
+            <span key={type} className={cn(s.label, s[`label${type}` as keyof typeof s])}>
               {type}
             </span>
           ))}
         </div>
       </div>
-      <div className={s.pictureWrap}>
+      <div className={cn(s.pictureWrap, s[`pictureWrap${Math.round(1 + Math.random() * 4)}` as keyof typeof s])}>
         <img src={img} alt={name} />
       </div>
     </div>

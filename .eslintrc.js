@@ -24,7 +24,8 @@ module.exports = {
       { builtinGlobals: false, hoist: "functions", allow: [] },
     ],
     "react/jsx-props-no-spreading": "off",
-
+    camelcase: "off",
+    "@typescript-eslint/camelcase": "off",
     "react/prop-types": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "no-console": "warn",
