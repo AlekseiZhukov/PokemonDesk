@@ -5,12 +5,12 @@ interface IConfig {
       host: string;
     };
     endpoint: {
-      getPokemons: {
+      [n: string]: {
         method: string;
         uri: {
           pathname: string;
-          query: {
-            limit?: number;
+          query?: {
+            [s: string]: number | string;
           };
         };
       };
