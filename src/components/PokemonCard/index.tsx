@@ -3,17 +3,9 @@ import cn from 'classnames';
 import Heading from '../Heading';
 
 import s from './PokemonCard.module.scss';
+import { PokemonRequest } from '../../interface/pokemons';
 
-interface TPokemonCardProps {
-  name: string;
-  stats: {
-    [n: string]: number;
-  };
-  types: [string, string?];
-  img: string;
-}
-
-const Index: React.FC<TPokemonCardProps> = ({ ...props }) => {
+const Index: React.FC<PokemonRequest> = ({ ...props }) => {
   const { name, stats, types, img } = { ...props };
   return (
     <div className={s.root}>
@@ -39,6 +31,7 @@ const Index: React.FC<TPokemonCardProps> = ({ ...props }) => {
           ))}
         </div>
       </div>
+
       <div className={cn(s.pictureWrap, s[`pictureWrap${Math.round(1 + Math.random() * 4)}` as keyof typeof s])}>
         <img src={img} alt={name} />
       </div>

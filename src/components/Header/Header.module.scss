@@ -1,11 +1,13 @@
 @import '../../variables';
 .root {
+  position: relative;
   height: 93px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: $third;
   box-shadow: 0 4px 16px rgba(1, 28, 64, 0.2);
+  z-index: 10;
 }
 
 .wrap {

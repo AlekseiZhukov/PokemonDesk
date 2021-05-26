@@ -1,43 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { A } from 'hookrouter';
 import Heading from '../../components/Heading';
 import Layout from '../../components/Layout';
 import PokemonCard from '../../components/PokemonCard';
+import useData from '../../hook/getData';
+import { IPokemons, PokemonRequest } from '../../interface/pokemons';
+import useDebounce from '../../hook/useDebounce';
 import s from './PokedexPage.module.scss';
-import req from '../../utils/request';
 
-const usePokemons = () => {
-  interface IUseState {
-    pokemons: [];
-    total: number;
-  }
-  const [data, setData] = useState<IUseState>({ pokemons: [], total: 0 });
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    const getPokemons = async () => {
-      setIsLoading(true);
-
-      try {
-        const result = await req('getPokemons');
-        setData(result);
-      } catch (e) {
-        setIsError(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getPokemons();
-  }, []);
-  return {
-    data,
-    isLoading,
-    isError,
-  };
-};
+interface IQuery {
+  name?: string;
+  limit?: number;
+}
 
 const PokedexPage = () => {
-  const { data, isLoading, isError } = usePokemons();
+  const [searchValue, setSearchValue] = useState('');
+  const [query, setQuery] = useState<IQuery>({});
+
+  const debouncedValue = useDebounce(searchValue, 1000);
+
+  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [debouncedValue]);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+    setQuery((state: IQuery) => ({
+      ...state,
+      name: e.target.value,
+    }));
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -47,39 +37,22 @@ const PokedexPage = () => {
     return <div>Som error...</div>;
   }
 
-  interface IPokemon {
-    name_clean: string;
-    abilities: [];
-    stats: {
-      hp: number;
-      attack: number;
-      defense: number;
-      'special-attack': number;
-      'special-defense': number;
-      speed: number;
-    };
-    types: [string, string?];
-    img: string;
-    name: string;
-    base_experience: number;
-    height: number;
-    id: number;
-    is_default: boolean;
-    order: number;
-    weight: number;
-  }
-
   return (
     <div className={s.root}>
       <Layout className={s.contextWrap}>
         <Heading tag="h3" className={s.title}>
-          {data.total} <b>Pokemons</b> for you to choose your favorite
+          {data && data.total} <b>Pokemons</b> for you to choose your favorite
         </Heading>
-        <div className={s.search}>Encuentra tu pokemon</div>
+
+        <input type="text" value={searchValue} onChange={handleSearchChange} />
+
         <div className={s.pokemonCardsWrap}>
-          {data.pokemons.map((pokemon: IPokemon) => (
-            <PokemonCard key={pokemon.id} {...pokemon} />
-          ))}
+          {data &&
+            data.pokemons.map((pokemon: PokemonRequest) => (
+              <A key={pokemon.id} href={`pokedex/${pokemon.id}`}>
+                <PokemonCard {...pokemon} />
+              </A>
+            ))}
         </div>
       </Layout>
     </div>
