@@ -8,20 +8,28 @@
   flex-flow: column nowrap;
   align-items: center;
   width: 90%;
+  input {
+    margin: 34px 0;
+    width: 100%;
+    height: 53px;
+    background: #f2f2f2;
+    box-shadow: 4px 4px 16px rgba(1, 28, 64, 0.2);
+    border-radius: 40px;
+    border: none;
+    padding-left: 30px;
+    &:focus-visible,
+    &:focus,
+    &:hover {
+      outline: 0;
+      outline-offset: 0;
+    }
+  }
 }
 .title {
   margin-top: 73px;
   font-weight: normal;
 }
 
-.search {
-  margin: 34px 0;
-  width: 100%;
-  height: 53px;
-  background: #f2f2f2;
-  box-shadow: 4px 4px 16px rgba(1, 28, 64, 0.2);
-  border-radius: 40px;
-}
 .pokemonCardsWrap {
   display: flex;
   flex-flow: row wrap;
