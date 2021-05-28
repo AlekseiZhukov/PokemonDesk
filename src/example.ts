@@ -30,3 +30,12 @@ interface MyArray<T> {
 const tsArr: MyArray<string> = ['1', '2', '3'];
 
 tsArr.reduce((accumulator, el) => accumulator + el);
+
+export const toCapitalizeFirstLetter = (str: string) => {
+  if (!str) return str;
+  const strWithoutSpaces = str.trim();
+  const newStr = strWithoutSpaces[0].toUpperCase() + strWithoutSpaces.slice(1).toLowerCase();
+  return newStr;
+};
+
+export default toCapitalizeFirstLetter;
