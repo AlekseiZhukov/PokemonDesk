@@ -11,7 +11,7 @@ export interface IPokemonProps {
 }
 
 const Pokemon: React.FC<IPokemonProps> = ({ id }) => {
-  const { data, isLoading, isError } = useData<PokemonRequest>('getPokemon', {}, [], id);
+  const { data, isLoading, isError } = useData<PokemonRequest>('getPokemon', { id }, []);
 
   const { name, stats, types, img, abilities, base_experience } = { ...data };
 

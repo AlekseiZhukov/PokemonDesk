@@ -1,3 +1,4 @@
+/*
 interface IConfig {
   client: {
     server: {
@@ -9,16 +10,15 @@ interface IConfig {
         method: string;
         uri: {
           pathname: string;
-          query?: {
-            [s: string]: number | string;
-          };
+
         };
       };
     };
   };
 }
+*/
 
-const config: IConfig = {
+const config = {
   client: {
     server: {
       protocol: 'http',
@@ -29,15 +29,31 @@ const config: IConfig = {
         method: 'GET',
         uri: {
           pathname: '/api/v1/pokemons',
-          query: {
-            limit: 10,
-          },
         },
       },
       getPokemon: {
         method: 'GET',
         uri: {
-          pathname: '/api/v1/pokemon/',
+          pathname: '/api/v1/pokemon/{id}',
+        },
+      },
+      // Face API
+      createPokemon: {
+        method: 'POST',
+        uri: {
+          pathname: '/api/v1/pokemon/create',
+        },
+      },
+      updatePokemon: {
+        method: 'PATCH',
+        uri: {
+          pathname: '/api/v1/pokemon/{id}',
+        },
+      },
+      deletePokemon: {
+        method: 'DELETE',
+        uri: {
+          pathname: '/api/v1/pokemon/{id}/delete',
         },
       },
     },

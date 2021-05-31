@@ -6,7 +6,7 @@ interface HeadingProps {
   tag: tagValues;
   className?: string;
 }
-const Heading: React.FC<HeadingProps> = ({ tag, className, children }) => {
+const Heading: React.FC<HeadingProps> = ({ tag = 'p', className, children }) => {
   return React.createElement(tag, { className }, children);
 };
 
