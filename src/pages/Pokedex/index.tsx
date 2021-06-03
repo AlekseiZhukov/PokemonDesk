@@ -7,81 +7,44 @@ import useData from '../../hook/getData';
 import { IPokemons, PokemonRequest } from '../../interface/pokemons';
 import useDebounce from '../../hook/useDebounce';
 import s from './PokedexPage.module.scss';
-// import InputFilter from "../../components/Filter";
+import InputFilter from '../../components/Filter';
 
 interface IQuery {
-  name?: string;
-  limit?: number;
-  attack_from?: number;
+  [n: string]: string | number;
+}
+
+interface IValues {
+  [n: string]: string;
 }
 
 const PokedexPage = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [searchAttackToValue, setSearchAttackToValue] = useState('');
-  const [searchAttackFromValue, setSearchAttackFromValue] = useState('');
+  const [n, setN] = useState('');
 
   const [query, setQuery] = useState<IQuery>({});
 
   const debouncedValue = useDebounce(searchValue, 1000);
-  const debouncedAttackToValue = useDebounce(searchAttackToValue, 1000);
-  const debouncedAttackFromValue = useDebounce(searchAttackFromValue, 1000);
 
-  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [
-    debouncedValue,
-    debouncedAttackToValue,
-    debouncedAttackFromValue,
-  ]);
-
-  /* const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-
-      setSearchValue(e.target.value);
-      setQuery((state: IQuery) => ({
-        ...state,
-        name: e.target.value,
-      }));
-  }; */
-
-  const handleSearchAttackToChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const idInput = e.target.id;
-    switch (idInput) {
-      case 'name':
-        setSearchValue(e.target.value);
-        setQuery((state: IQuery) => ({
-          ...state,
-          [e.target.id]: e.target.value,
-        }));
-        break;
-
-      case 'attack_to':
-        setSearchAttackToValue(e.target.value);
-        setQuery((state: IQuery) => ({
-          ...state,
-          [e.target.id]: e.target.value,
-          limit: 100,
-        }));
-        break;
-      case 'attack_from':
-        setSearchAttackFromValue(e.target.value);
-        setQuery((state: IQuery) => ({
-          ...state,
-          [e.target.id]: e.target.value,
-          limit: 100,
-        }));
-        break;
-      default:
-        console.log('#### handleSearchAttackToChange no such case');
-    }
-  };
-
-  /* const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setN(e.target.value)
+  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [debouncedValue, n]);
+  console.log('useData IPokemons', n);
+  console.log('useData IPokemons', query);
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
     setQuery((state: IQuery) => ({
       ...state,
-    [e.target.id]: e.target.value,
-      limit: 100
+      name: e.target.value,
     }));
+  };
 
-  } */
+  const submiting = (values: IValues) => {
+    console.log('submit on Pokedex', values);
+
+    setQuery((state: IQuery) => ({
+      ...state,
+      ...values,
+    }));
+    setN(`${Object.values(values)}${Object.keys(values)}`);
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -97,29 +60,8 @@ const PokedexPage = () => {
         <Heading tag="h3" className={s.title}>
           {data && data.total} <b>Pokemons</b> for you to choose your favorite
         </Heading>
-        <input type="text" value={searchValue} onChange={handleSearchAttackToChange} id="name" />
-        <div className={s.filterInputWraper}>
-          <label className={s.filterLabelInput} htmlFor="attack_from">
-            attack from:
-            <input
-              className={s.filterInput}
-              type="number"
-              value={searchAttackFromValue}
-              onChange={handleSearchAttackToChange}
-              id="attack_from"
-            />
-          </label>
-          <label className={s.filterLabelInput} htmlFor="attack_to">
-            attack to:
-            <input
-              className={s.filterInput}
-              type="number"
-              value={searchAttackToValue}
-              onChange={handleSearchAttackToChange}
-              id="attack_to"
-            />
-          </label>
-        </div>
+        <input type="text" value={searchValue} onChange={handleSearchChange} id="name" />
+        <InputFilter onSubmit={submiting} />
 
         <div className={s.pokemonCardsWrap}>
           {data &&

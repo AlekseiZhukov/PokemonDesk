@@ -14,3 +14,4 @@ src/*.d.ts
 /src/pages/Pokedex/PokedexPage.module.scss.d.ts
 /src/components/PokemonCard/PokemonCard.module.scss.d.ts
 /src/pages/Pokemon/PokemonPage.module.scss.d.ts
+/src/components/Filter/Filter.module.scss.d.ts
