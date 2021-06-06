@@ -10,6 +10,7 @@ interface IValues {
 const InputFilter: React.FC<IProps> = (props) => {
   const [searchAttackToValue, setSearchAttackToValue] = useState('');
   const [searchAttackFromValue, setSearchAttackFromValue] = useState('');
+  const [limitedPokemons, setLimitedPokemons] = useState('');
   const { onSubmit } = props;
 
   const handleOnChangeInputAttackToValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,11 +19,15 @@ const InputFilter: React.FC<IProps> = (props) => {
   const handleOnChangeInputAttackFromValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchAttackFromValue(e.target.value);
   };
+  const handleOnChangeLimitedPokemonsValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLimitedPokemons(e.target.value);
+  };
   const onSubmitFilter = (e: React.FormEvent) => {
     e.preventDefault();
     const values: IValues = {
       attack_to: searchAttackToValue,
       attack_from: searchAttackFromValue,
+      limit: limitedPokemons,
     };
 
     onSubmit(values);
@@ -53,7 +58,19 @@ const InputFilter: React.FC<IProps> = (props) => {
             name="attack_to"
           />
         </label>
+        <label className={s.filterLabelInput} htmlFor="attack_from">
+          колличество покемонов на странице:
+          <input
+            className={s.filterInput}
+            type="number"
+            value={limitedPokemons}
+            onChange={handleOnChangeLimitedPokemonsValue}
+            id="attack_from"
+            name="attack_from"
+          />
+        </label>
       </div>
+
       <input type="submit" value="filtering" />
     </form>
   );
