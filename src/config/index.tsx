@@ -1,22 +1,7 @@
-/*
-interface IConfig {
-  client: {
-    server: {
-      protocol: string;
-      host: string;
-    };
-    endpoint: {
-      [n: string]: {
-        method: string;
-        uri: {
-          pathname: string;
-
-        };
-      };
-    };
-  };
+export enum configEndpoint {
+  getPokemonsTypes = 'getPokemonsTypes',
+  getPokemons = 'getPokemons',
 }
-*/
 
 const config = {
   client: {
@@ -35,6 +20,12 @@ const config = {
         method: 'GET',
         uri: {
           pathname: '/api/v1/pokemon/{id}',
+        },
+      },
+      getPokemonsTypes: {
+        method: 'GET',
+        uri: {
+          pathname: '/api/v1/types',
         },
       },
       // Face API
